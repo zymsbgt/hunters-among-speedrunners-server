@@ -1,1 +1,0 @@
-java -Xms128M -Xmx4096M -Dlog4j.configurationFile=log4j2_112-116.xml -jar paper-1.16.5-567.jar

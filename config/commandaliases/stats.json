@@ -1,0 +1,11 @@
+[
+{
+        "command": "stats"
+        "execution": [
+            {
+                "command": "trigger hnr.stats"
+                "type": "SERVER"
+            }
+        ]
+}
+]

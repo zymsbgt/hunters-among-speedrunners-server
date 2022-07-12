@@ -1,0 +1,8 @@
+{
+    "commandMode": "COMMAND_CUSTOM",
+    "customCommand": {
+      "parent": "info",
+      "command": "/trigger hnr.information",
+      "commandType": "SERVER"
+  }
+}
