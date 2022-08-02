@@ -26,6 +26,7 @@ stats:
   disable-saving: false
   forced-stats: {}
 settings:
+  log-named-deaths: true
   bungeecord: false
   sample-count: 12
   player-shuffle: 0
@@ -62,6 +63,7 @@ players:
   disable-saving: false
 world-settings:
   default:
+    thunder-chance: 100000
     verbose: false
     hopper-amount: 1
     dragon-death-sound-radius: 0

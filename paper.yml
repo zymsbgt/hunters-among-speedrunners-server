@@ -12,8 +12,11 @@
 
 verbose: false
 use-display-name-in-quit-message: false
-config-version: 20
+config-version: 24
 settings:
+  lag-compensate-block-breaking: true
+  send-full-pos-for-hard-colliding-entities: true
+  log-player-ip-addresses: true
   use-alternative-luck-formula: false
   load-permissions-yml-before-plugins: true
   region-file-cache-size: 256
@@ -30,6 +33,7 @@ settings:
   max-player-auto-save-per-tick: -1
   save-empty-scoreboard-teams: false
   unsupported-settings:
+    perform-username-validation: true
     allow-headless-pistons: false
     allow-permanent-block-break-exploits: false
     allow-piston-duplication: false
@@ -69,6 +73,29 @@ settings:
     enabled: false
     online-mode: false
     secret: ''
+  use-display-name-in-quit-message: false
+  loggers:
+    deobfuscate-stacktraces: true
+  chunk-loading:
+    min-load-radius: 2
+    max-concurrent-sends: 2
+    autoconfig-send-distance: true
+    target-player-chunk-send-rate: 100.0
+    global-max-chunk-send-rate: -1.0
+    enable-frustum-priority: false
+    global-max-chunk-load-rate: -1.0
+    player-max-concurrent-loads: 4.0
+    global-max-concurrent-loads: 500.0
+  packet-limiter:
+    kick-message: '&cSent too many packets'
+    limits:
+      all:
+        interval: 7.0
+        max-packet-rate: 500.0
+      PacketPlayInAutoRecipe:
+        interval: 4.0
+        max-packet-rate: 5.0
+        action: DROP
 messages:
   no-permission: '&cI''m sorry, but you do not have permission to perform this command.
     Please contact the server administrators if you believe that this is in error.'
@@ -78,6 +105,7 @@ messages:
     flying-player: Flying is not enabled on this server
     flying-vehicle: Flying is not enabled on this server
 timings:
+  url: https://timings.aikar.co/
   enabled: true
   verbose: true
   server-name-privacy: false
@@ -90,6 +118,10 @@ timings:
   server-name: Unknown Server
 world-settings:
   default:
+    piglins-guard-chests: true
+    map-item-frame-cursor-update-interval: 10
+    allow-player-cramming-damage: false
+    split-overstacked-loot: true
     baby-zombie-movement-modifier: 0.5
     optimize-explosions: false
     disable-teleportation-suffocation-check: false
@@ -99,7 +131,7 @@ world-settings:
     prevent-moving-into-unloaded-chunks: false
     max-auto-save-chunks-per-tick: 24
     count-all-mobs-for-spawning: false
-    per-player-mob-spawns: false
+    per-player-mob-spawns: true
     delay-chunk-unloads-by: 10s
     should-remove-dragon: false
     ender-dragons-death-always-places-dragon-egg: false
@@ -179,6 +211,8 @@ world-settings:
           per-player: false
           day: 5
     entity-per-chunk-save-limit:
+      fireball: -1
+      small_fireball: -1
       experience_orb: -1
       snowball: -1
       ender_pearl: -1
@@ -193,8 +227,27 @@ world-settings:
       MinimumTicks: 100
       MaximumTicks: 600
     despawn-ranges:
-      soft: 32
-      hard: 128
+      monster:
+        soft: 32
+        hard: 128
+      creature:
+        soft: 32
+        hard: 128
+      ambient:
+        soft: 32
+        hard: 128
+      underground_water_creature:
+        soft: 32
+        hard: 128
+      water_creature:
+        soft: 32
+        hard: 128
+      water_ambient:
+        soft: 32
+        hard: 64
+      misc:
+        soft: 32
+        hard: 128
     frosted-ice:
       enabled: true
       delay:
@@ -215,13 +268,15 @@ world-settings:
       items:
         COBBLESTONE: 300
     hopper:
+      ignore-occluding-blocks: true
       cooldown-when-full: true
       disable-move-event: false
     spawn-limits:
-      monsters: -1
-      animals: -1
-      water-animals: -1
-      water-ambient: -1
+      monster: -1
+      creature: -1
+      underground_water_creature: -1
+      water_creature: -1
+      water_ambient: -1
       ambient: -1
     lightning-strike-distance-limit:
       sound: -1
@@ -240,6 +295,7 @@ world-settings:
       - NORMAL
       - HARD
     anti-xray:
+      max-block-height: 64
       enabled: false
       engine-mode: 1
       max-chunk-section-index: 3
@@ -270,3 +326,18 @@ world-settings:
       maximum: 0.0
     generator-settings:
       flat-bedrock: false
+    mob-effects:
+      undead-immune-to-certain-effects: true
+      spiders-immune-to-poison-effect: true
+      immune-to-wither-effect:
+        wither: true
+        wither-skeleton: true
+    tick-rates:
+      sensor:
+        villager:
+          secondarypoisensor: 40
+      behavior:
+        villager:
+          validatenearbypoi: -1
+    feature-seeds:
+      generate-random-seeds-for-all: false
