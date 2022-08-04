@@ -1,1 +1,1 @@
-java -Xms128M -Xmx4096M -jar paper-1.17.1-411.jar
+java -Xms128M -Xmx4096M -jar paper-1.18.2-387.jar
