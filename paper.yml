@@ -128,7 +128,7 @@ world-settings:
     fixed-chunk-inhabited-time: -1
     use-vanilla-world-scoreboard-name-coloring: false
     experience-merge-max-value: -1
-    prevent-moving-into-unloaded-chunks: false
+    prevent-moving-into-unloaded-chunks: true
     max-auto-save-chunks-per-tick: 24
     count-all-mobs-for-spawning: false
     per-player-mob-spawns: true
